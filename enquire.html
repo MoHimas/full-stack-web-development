@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry - Malcolm Lismore Photography</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var location = document.getElementById('location').value;
+            var date = document.getElementById('date').value;
+            var service = document.getElementById('service').value;
+            var message = document.getElementById('message').value;
+            
+            // Basic validation
+            if (name == "" || email == "" || phone == "" || location == "" || date == "" || service == "" || message == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+
+            // Email validation
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.match(emailPattern)) {
+                alert("Please enter a valid email address");
+                return false;
+            }
+
+            // Phone validation
+            var phonePattern = /^\d{10}$/;
+            if (!phone.match(phonePattern)) {
+                alert("Please enter a valid 10-digit phone number");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Malcolm Lismore Photography</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="prices.html">Pricing</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="enquire.html">Enquiry</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container inquiry-section">
+        <h1 class="text-center">Inquire About Our Services</h1>
+        <form action="submit_enquiry.php" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>    
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="Enter event location" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="service">Service Interested In:</label>
+                <select class="form-control" id="service" name="service" required>
+                    <option value="">Select a service</option>
+                    <option value="Wedding Photography">Wedding Photography</option>
+                    <option value="Portrait Photography">Portrait Photography</option>
+                    <option value="Event Photography">Event Photography</option>
+                    <option value="Landscape Photography">Landscape Photography</option>
+                    <option value="Wildlife Photography">Wildlife Photography</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 Malcolm Lismore Photography</p>
+    </footer>
+</body>
+</html>
